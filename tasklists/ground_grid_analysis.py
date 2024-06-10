@@ -21,6 +21,7 @@ class _GroundGridInfoReceive:
     Name = GGA_INFO_RECEIVED_NAME
     Tasks = {
         'AddPpmpTasks': 'Add additional check-in tasks outlined by PR in PPMP checklist',
+        'ProjectInQueue': 'Project in Queue',
         'BuildGroundGrid': 'Build ground grid model & complete analysis',
         'SubmitGgaInternal': 'Submit Ground Grid Analysis Report - 1 for internal review',
         'ReviewGga': 'Review Ground Grid Analysis Report - 1',

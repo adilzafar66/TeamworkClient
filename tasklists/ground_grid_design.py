@@ -22,6 +22,7 @@ class _GroundGridDesignInfoReceive:
     Name = GGD_INFO_RECEIVED_NAME
     Tasks = {
         'AddPpmpTasks': 'Add additional check-in tasks outlined by PR in PPMP checklist',
+        'ProjectInQueue': 'Project in Queue',
         'BuildGroundGrid': 'Build ground grid model & complete design',
         'SubmitGgdInternal': 'Submit Ground Grid Design Report & Drawings - 1 for internal review',
         'ReviewGgd': 'Review Ground Grid Report & Drawings - 1',

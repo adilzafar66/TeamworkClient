@@ -24,7 +24,7 @@ class _SiteWideInfoToBeReviewedTasks(_InfoToBeReviewed):
 
 class _SiteWideInQueueTasks(_InQueue):
     RequiredTasks = [
-
+        Tasklists.SiteWideStudy.InfoReceived.Tasks['ProjectInQueue']
     ]
 
 

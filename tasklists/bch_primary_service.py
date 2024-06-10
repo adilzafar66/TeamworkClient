@@ -20,6 +20,7 @@ class _BchInfoReceive:
     Name = BCH_PRIMARY_INFO_RECEIVED_NAME
     Tasks = {
         'AddPpmpTasks': 'Add additional check-in tasks outlined by PR in PPMP checklist',
+        'ProjectInQueue': 'Project in Queue',
         'CompleteAnalysis': 'Update model, complete analysis',
         'SubmitCsInternal': 'Submit BCH Primary Service Coordination Summary for Internal Review',
         'ReviewCs': 'Review BCH Primary Service Coordination Summary 1',

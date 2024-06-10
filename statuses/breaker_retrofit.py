@@ -24,7 +24,7 @@ class _BrInfoToBeReviewedTasks(_InfoToBeReviewed):
 
 class _BrInQueueTasks(_InQueue):
     RequiredTasks = [
-
+        Tasklists.BreakerRetrofit.InfoReceived.Tasks['ProjectInQueue']
     ]
 
 

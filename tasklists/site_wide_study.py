@@ -21,6 +21,7 @@ class _SiteWideInfoReceive:
     Name = SITE_WIDE_INFO_RECEIVED_NAME
     Tasks = {
         'AddPpmpTasks': 'Add additional check-in tasks outlined by PR in PPMP checklist',
+        'ProjectInQueue': 'Project in Queue',
         'UpdateModelCompleteAnalysis': 'Update model & complete analysis',
         'SubmitReportInternal': 'Submit SC/COR/AF Report - 1 for internal review',
         'ReviewReport': 'Review SC/COR/AF Report - 1',

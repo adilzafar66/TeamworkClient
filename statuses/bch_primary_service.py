@@ -24,7 +24,7 @@ class _BchInfoToBeReviewedTasks(_InfoToBeReviewed):
 
 class _BchInQueueTasks(_InQueue):
     RequiredTasks = [
-
+        Tasklists.BchPrimaryService.InfoReceived.Tasks['ProjectInQueue']
     ]
 
 

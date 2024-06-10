@@ -24,7 +24,7 @@ class _GgaInfoToBeReviewedTasks(_InfoToBeReviewed):
 
 class _GgaInQueueTasks(_InQueue):
     RequiredTasks = [
-
+        Tasklists.GroundGridAnalysis.InfoReceived.Tasks['ProjectInQueue']
     ]
 
 

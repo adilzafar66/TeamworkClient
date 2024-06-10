@@ -19,6 +19,7 @@ class _BreakerRetrofitInfoReceive:
     Name = RETROFIT_INFO_RECEIVED_NAME
     Tasks = {
         'AddPpmpTasks': 'Add additional check-in tasks outlined by PR in PPMP checklist',
+        'ProjectInQueue': 'Project in Queue',
         'UpdateModel': 'Update model, complete analysis',
         'ReviewScaReport': 'Review SC/COR/AF Report - 1.0.X',
         'UpdatePpmpChecklist': 'Update PPMP checklist with Engineering decisions and completed checks',
