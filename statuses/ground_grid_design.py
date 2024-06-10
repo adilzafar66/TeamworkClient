@@ -6,19 +6,19 @@ from statuses.template import _WaitingForClientReview, _WaitingForCommissioning,
 
 class _GgdInfoToBeRequestedTasks(_InfoToBeRequestedTasks):
     RequiredTasks = [
-        Tasklists.GroundGridDesign.InfoRequest
+        Tasklists.GroundGridDesign.InfoRequest.Tasks['SubmitDesignInfoRequest']
     ]
 
 
 class _GgdWaitingForInfoTasks(_WaitingForInfoTasks):
     RequiredTasks = [
-        Tasklists.GroundGridDesign.InfoRequest
+        Tasklists.GroundGridDesign.InfoRequest.Tasks['FinalFollowupRfi']
     ]
 
 
 class _GgdInfoToBeReviewedTasks(_InfoToBeReviewed):
     RequiredTasks = [
-        Tasklists.GroundGridDesign.InfoRequest
+        Tasklists.GroundGridDesign.InfoRequest.Tasks['InfoReceived']
     ]
 
 
@@ -30,32 +30,32 @@ class _GgdInQueueTasks(_InQueue):
 
 class _GgdActiveTasks(_ActiveTasks):
     RequiredTasks = [
-        Tasklists.GroundGridDesign.InfoReceived
+        Tasklists.GroundGridDesign.InfoReceived.Tasks['SubmitGgdToClient']
     ]
 
 
 class _GgdWaitingForClientReviewTasks(_WaitingForClientReview):
     RequiredTasks = [
-        Tasklists.GroundGridDesign.InfoReceived
+        Tasklists.GroundGridDesign.InfoReceived.Tasks['FollowupIfr']
     ]
 
 
 class _GgdWaitingForCommissioningTasks(_WaitingForCommissioning):
     RequiredTasks = [
-
+        Tasklists.GroundGridDesign.InfoReceived.Tasks['FollowupIfc']
     ]
 
 
 class _GgdFinalDocumentationTasks(_FinalDocumentation):
     RequiredTasks = [
-        Tasklists.GroundGridDesign.InfoReceived
+        Tasklists.GroundGridDesign.InfoReceived.Tasks['MoveToRefFolder']
     ]
 
 
 class _GgdCompleteTasks(_Complete):
     RequiredTasks = [
-        Tasklists.GroundGridDesign.InfoReceived,
-        Tasklists.GroundGridDesign.InfoReceived
+        Tasklists.GroundGridDesign.InfoReceived.Tasks['NotifyPic'],
+        Tasklists.GroundGridDesign.InfoReceived.Tasks['UncheckTimeEntry']
     ]
 
 

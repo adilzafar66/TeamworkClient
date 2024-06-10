@@ -6,7 +6,7 @@ from statuses.template import _WaitingForClientReview, _WaitingForCommissioning,
 
 class _BrInfoToBeRequestedTasks(_InfoToBeRequestedTasks):
     RequiredTasks = [
-        Tasklists.BreakerRetrofit.InfoRequest
+        Tasklists.BreakerRetrofit.InfoRequest.Tasks['SubmitRfiToClient']
     ]
 
 
@@ -18,7 +18,7 @@ class _BrWaitingForInfoTasks(_WaitingForInfoTasks):
 
 class _BrInfoToBeReviewedTasks(_InfoToBeReviewed):
     RequiredTasks = [
-        Tasklists.BreakerRetrofit.InfoRequest
+        Tasklists.BreakerRetrofit.InfoRequest.Tasks['InfoReceived']
     ]
 
 
@@ -30,13 +30,13 @@ class _BrInQueueTasks(_InQueue):
 
 class _BrActiveTasks(_ActiveTasks):
     RequiredTasks = [
-        Tasklists.BreakerRetrofit.InfoReceived
+        Tasklists.BreakerRetrofit.InfoReceived.Tasks['SubmitBchMemoToBch']
     ]
 
 
 class _BrWaitingForClientReviewTasks(_WaitingForClientReview):
     RequiredTasks = [
-        Tasklists.BreakerRetrofit.InfoReceived
+
     ]
 
 
@@ -48,14 +48,14 @@ class _BrWaitingForCommissioningTasks(_WaitingForCommissioning):
 
 class _BrFinalDocumentationTasks(_FinalDocumentation):
     RequiredTasks = [
-        Tasklists.BreakerRetrofit.InfoReceived
+        Tasklists.BreakerRetrofit.InfoReceived.Tasks['RecordAsLeftSettings']
     ]
 
 
 class _BrCompleteTasks(_Complete):
     RequiredTasks = [
-        Tasklists.BreakerRetrofit.InfoReceived,
-        Tasklists.BreakerRetrofit.InfoReceived
+        Tasklists.BreakerRetrofit.InfoReceived.Tasks['NotifyPic'],
+        Tasklists.BreakerRetrofit.InfoReceived.Tasks['UncheckTimeEntry']
     ]
 
 

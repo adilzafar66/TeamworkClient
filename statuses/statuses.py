@@ -59,6 +59,8 @@ class Statuses:
             if status_study.InfoToBeReviewed.verify_status(tasks):
                 return status_study.InfoToBeReviewed.get_status_name()
         elif status_study.TasklistName == cls.InfoReceived.Name:
+            if status_study.InQueue.verify_status(tasks):
+                return status_study.InQueue.get_status_name()
             if status_study.Active.verify_status(tasks):
                 return status_study.Active.get_status_name()
             if status_study.WaitingForClientReview.verify_status(tasks):
