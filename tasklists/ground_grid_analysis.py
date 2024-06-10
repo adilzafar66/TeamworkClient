@@ -1,5 +1,8 @@
+from consts import GGA_INFO_REQUEST_NAME, GGA_INFO_RECEIVED_NAME
+
+
 class _GroundGridInfoRequest:
-    Name = 'PSS - Ground Grid Analysis - Info Request'
+    Name = GGA_INFO_REQUEST_NAME
     Tasks = {
         'UsePtaMassAssignment': 'Use the PTA Mass assignment tool to assign the required assignees in the NetSuite',
         'RequestFaultDataClient': 'Request fault data from client / BCH Info Release form submitted to client',
@@ -15,7 +18,7 @@ class _GroundGridInfoRequest:
 
 
 class _GroundGridInfoReceive:
-    Name = 'PSS - Ground Grid Analysis - Info Received'
+    Name = GGA_INFO_RECEIVED_NAME
     Tasks = {
         'AddPpmpTasks': 'Add additional check-in tasks outlined by PR in PPMP checklist',
         'BuildGroundGrid': 'Build ground grid model & complete analysis',

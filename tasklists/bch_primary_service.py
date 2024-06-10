@@ -1,5 +1,8 @@
+from consts import BCH_PRIMARY_INFO_REQUEST_NAME, BCH_PRIMARY_INFO_RECEIVED_NAME
+
+
 class _BchInfoRequest:
-    Name = 'PSS - BCH Primary Service - Info Request'
+    Name = BCH_PRIMARY_INFO_REQUEST_NAME
     Tasks = {
         'UsePtaMassAssignment': 'Use the PTA Mass assignment tool to assign the required assignees in the NetSuite',
         'StartPpmpDocumentation': 'Start PPMP Documentation',
@@ -14,7 +17,7 @@ class _BchInfoRequest:
 
 
 class _BchInfoReceive:
-    Name = 'PSS - BCH Primary Service - Info Received'
+    Name = BCH_PRIMARY_INFO_RECEIVED_NAME
     Tasks = {
         'AddPpmpTasks': 'Add additional check-in tasks outlined by PR in PPMP checklist',
         'CompleteAnalysis': 'Update model, complete analysis',

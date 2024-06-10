@@ -15,3 +15,16 @@ WAITING_FOR_COMMISSIONING = 'WAITING FOR COMMISSIONING'
 FINAL_DOCUMENTATION = 'FINAL DOCUMENTATION'
 COMPLETE = 'COMPLETE'
 POWER_SYSTEMS_STUDIES = 'PSS'
+
+SITE_WIDE_INFO_REQUEST_NAME = 'PSS - Site-wide Study - Info Request'
+BCH_PRIMARY_INFO_REQUEST_NAME = 'PSS - BCH Primary Service - Info Request'
+GGA_INFO_REQUEST_NAME = 'PSS - Ground Grid Analysis - Info Request'
+GGD_INFO_REQUEST_NAME = 'PSS - Ground Grid Design - Info Request'
+RETROFIT_INFO_REQUEST_NAME = 'PSS - FS Retrofit - Info Request'
+
+SITE_WIDE_INFO_RECEIVED_NAME = 'PSS - Site-wide Study - Info Received'
+BCH_PRIMARY_INFO_RECEIVED_NAME = 'PSS - BCH Primary Service - Info Received'
+GGA_INFO_RECEIVED_NAME = 'PSS - Ground Grid Analysis - Info Received'
+GGD_INFO_RECEIVED_NAME = 'PSS - Ground Grid Design - Info Received'
+RETROFIT_INFO_RECEIVED_NAME = 'PSS - FS Retrofit - Info Received'
+

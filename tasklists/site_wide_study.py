@@ -1,5 +1,8 @@
+from consts import SITE_WIDE_INFO_REQUEST_NAME, SITE_WIDE_INFO_RECEIVED_NAME
+
+
 class _SiteWideInfoRequest:
-    Name = 'PSS - Site-wide Study - Info Request'
+    Name = SITE_WIDE_INFO_REQUEST_NAME
     Tasks = {
         'UsePtaMassAssignment': 'Use the PTA Mass assignment tool to assign the required assignees in the NetSuite',
         'StartPpmpDocumentation': 'Start PPMP Documentation',
@@ -15,7 +18,7 @@ class _SiteWideInfoRequest:
 
 
 class _SiteWideInfoReceive:
-    Name = 'PSS - Site-wide Study - Info Received'
+    Name = SITE_WIDE_INFO_RECEIVED_NAME
     Tasks = {
         'AddPpmpTasks': 'Add additional check-in tasks outlined by PR in PPMP checklist',
         'UpdateModelCompleteAnalysis': 'Update model & complete analysis',
