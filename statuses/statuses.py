@@ -1,4 +1,4 @@
-from consts import INFO_REQUEST, INFO_RECEIVED
+from consts import INFO_REQUEST, INFO_RECEIVED, UNIDENTIFIED
 from statuses.bch_primary_service import _BchInfoRequestRequiredTasks, _BchInfoReceivedRequiredTasks
 from statuses.site_wide_study import _SiteWideInfoRequestRequiredTasks, _SiteWideInfoReceivedRequiredTasks
 from statuses.ground_grid_analysis import _GgaInfoRequestRequiredTasks, _GgaInfoReceivedRequiredTasks
@@ -65,12 +65,15 @@ class Statuses:
                 return status_study.Active.get_status_name()
             if status_study.WaitingForClientReview.verify_status(tasks):
                 return status_study.WaitingForClientReview.get_status_name()
+            if status_study.ActiveAgain.verify_status(tasks):
+                return status_study.ActiveAgain.get_status_name()
             if status_study.WaitingForCommissioning.verify_status(tasks):
                 return status_study.WaitingForCommissioning.get_status_name()
             if status_study.FinalDocumentation.verify_status(tasks):
                 return status_study.FinalDocumentation.get_status_name()
             if status_study.Complete.verify_status(tasks):
                 return status_study.Complete.get_status_name()
+            return UNIDENTIFIED
 
     @classmethod
     def get_tasklist_statuses(cls, tasklist_name: str):

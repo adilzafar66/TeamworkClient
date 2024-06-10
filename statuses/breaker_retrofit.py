@@ -1,16 +1,16 @@
 from consts import INFO_REQUEST, INFO_RECEIVED, BREAKER_RETROFIT
 from tasklists.tasklists import Tasklists
-from statuses.template import _InfoToBeRequestedTasks, _InfoToBeReviewed, _WaitingForInfoTasks, _ActiveTasks, _InQueue
+from statuses.template import _InfoToBeRequested, _InfoToBeReviewed, _WaitingForInfo, _Active, _InQueue, _ActiveAgain
 from statuses.template import _WaitingForClientReview, _WaitingForCommissioning, _FinalDocumentation, _Complete
 
 
-class _BrInfoToBeRequestedTasks(_InfoToBeRequestedTasks):
+class _BrInfoToBeRequested(_InfoToBeRequested):
     RequiredTasks = [
         Tasklists.BreakerRetrofit.InfoRequest.Tasks['SubmitRfiToClient']
     ]
 
 
-class _BrWaitingForInfoTasks(_WaitingForInfoTasks):
+class _BrWaitingForInfo(_WaitingForInfo):
     RequiredTasks = [
         Tasklists.BreakerRetrofit.InfoRequest
     ]
@@ -28,13 +28,19 @@ class _BrInQueueTasks(_InQueue):
     ]
 
 
-class _BrActiveTasks(_ActiveTasks):
+class _BrActive(_Active):
     RequiredTasks = [
         Tasklists.BreakerRetrofit.InfoReceived.Tasks['SubmitBchMemoToBch']
     ]
 
 
 class _BrWaitingForClientReviewTasks(_WaitingForClientReview):
+    RequiredTasks = [
+
+    ]
+
+
+class _BrActiveAgain(_ActiveAgain):
     RequiredTasks = [
 
     ]
@@ -65,16 +71,17 @@ class BreakerRetrofit:
 
 class _BrInfoRequestRequiredTasks(BreakerRetrofit):
     TasklistName = INFO_REQUEST
-    InfoToBeRequested = _BrInfoToBeRequestedTasks
+    InfoToBeRequested = _BrInfoToBeRequested
     InfoToBeReviewed = _BrInfoToBeReviewedTasks
-    WaitingForInfo = _BrWaitingForInfoTasks
+    WaitingForInfo = _BrWaitingForInfo
 
 
 class _BrInfoReceivedRequiredTasks(BreakerRetrofit):
     TasklistName = INFO_RECEIVED
     InQueue = _BrInQueueTasks
-    Active = _BrActiveTasks
+    Active = _BrActive
     WaitingForClientReview = _BrWaitingForClientReviewTasks
+    ActiveAgain = _BrActiveAgain
     WaitingForCommissioning = _BrWaitingForCommissioningTasks
     FinalDocumentation = _BrFinalDocumentationTasks
     Complete = _BrCompleteTasks
