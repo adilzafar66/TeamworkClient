@@ -48,7 +48,7 @@ class _BchActiveAgain(_ActiveAgain):
 
 class _BchWaitingForCommissioningTasks(_WaitingForCommissioning):
     RequiredTasks = [
-
+        Tasklists.BchPrimaryService.InfoReceived['ReadyForCommissioning']
     ]
 
 

@@ -37,6 +37,7 @@ class _SiteWideInfoReceive:
         'SubmitReportFinalClient': 'Submit SC/COR/AF Report - 4 to client',
         'InformIfcSettingsApproval': 'Inform PIC that IFC settings are approved and ready for implementation',
         'FollowupIfc': 'Follow-up on latest submitted IFC revision if necessary',
+        'ReadyForCommissioning': 'Ready for Commissioning',
         'ConfirmSettings': 'Obtain confirmation that settings have been implemented by the latest study',
         'SubmitReportFinalInternal5': 'Submit SC/COR/AF Report - 5 for internal review',
         'ReviewReportFinal5': 'Review SC/COR/AF Report - 5',

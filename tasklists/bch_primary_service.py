@@ -29,6 +29,7 @@ class _BchInfoReceive:
         'SubmitCsClient': 'Submit BCH Primary Service Coordination Summary - Rev 4 to client',
         'CompleteMilestone': 'Complete Invoicing Milestone - IFR in NetSuite and check "Ready to Invoice"',
         'FollowupIfr': 'Follow-up on latest submitted IFR revision if necessary',
+        'ReadyForCommissioning': 'Ready for Commissioning',
         'SubmitCsFinalInternal': 'Submit BCH Primary Service Coordination Summary - 5 for internal review',
         'ReviewCsFinal': 'Review BCH Primary Service Coordination Summary - 5',
         'SubmitCsFinalPic': 'Submit BCH Primary Service Coordination Summary - 5 to PIC',
