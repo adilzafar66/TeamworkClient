@@ -25,15 +25,3 @@ if __name__ == '__main__':
 
         print(study.name)
         print(study.get_study_status())
-
-    # for tasklist in project.tasklists:
-    #     if tasklist.status == 'completed':
-    #         print('Complete')
-    #         continue
-    #     project_tags = project.get_tasklist_tags(tasklist)
-    #     if project_tags:
-    #         _, study_name, tasklist_name = project_tags
-    #         study = Study(study_name, tasklist.status, tasklist.status)
-    #         tasks = project.get_tasks_from_tasklist(tasklist)
-    #         if tasks:
-    #             print(Statuses.get_tasklist_status(study_name, tasklist_name, tasks))
