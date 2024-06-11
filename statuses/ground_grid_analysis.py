@@ -1,16 +1,16 @@
 from consts import GROUND_GRID_ANALYSIS, INFO_REQUEST, INFO_RECEIVED
 from tasklists.tasklists import Tasklists
-from statuses.template import _InfoToBeRequestedTasks, _InfoToBeReviewed, _WaitingForInfoTasks, _ActiveTasks, _InQueue
+from statuses.template import _InfoToBeRequested, _InfoToBeReviewed, _WaitingForInfo, _Active, _InQueue, _ActiveAgain
 from statuses.template import _WaitingForClientReview, _WaitingForCommissioning, _FinalDocumentation, _Complete
 
 
-class _GgaInfoToBeRequestedTasks(_InfoToBeRequestedTasks):
+class _GgaInfoToBeRequested(_InfoToBeRequested):
     RequiredTasks = [
         Tasklists.GroundGridAnalysis.InfoRequest.Tasks['SubmitGroundGridDeclaration']
     ]
 
 
-class _GgaWaitingForInfoTasks(_WaitingForInfoTasks):
+class _GgaWaitingForInfo(_WaitingForInfo):
     RequiredTasks = [
         Tasklists.GroundGridAnalysis.InfoRequest.Tasks['FinalFollowupRfi']
     ]
@@ -24,13 +24,19 @@ class _GgaInfoToBeReviewedTasks(_InfoToBeReviewed):
 
 class _GgaInQueueTasks(_InQueue):
     RequiredTasks = [
-
+        Tasklists.GroundGridAnalysis.InfoReceived.Tasks['ProjectInQueue']
     ]
 
 
-class _GgaActiveTasks(_ActiveTasks):
+class _GgaActive(_Active):
     RequiredTasks = [
         Tasklists.GroundGridAnalysis.InfoReceived.Tasks['SubmitGgaToClient']
+    ]
+
+
+class _GgaActiveAgain(_ActiveAgain):
+    RequiredTasks = [
+
     ]
 
 
@@ -65,16 +71,17 @@ class GroundGridAnalysis:
 
 class _GgaInfoRequestRequiredTasks(GroundGridAnalysis):
     TasklistName = INFO_REQUEST
-    InfoToBeRequested = _GgaInfoToBeRequestedTasks
-    WaitingForInfo = _GgaWaitingForInfoTasks
+    InfoToBeRequested = _GgaInfoToBeRequested
+    WaitingForInfo = _GgaWaitingForInfo
     InfoToBeReviewed = _GgaInfoToBeReviewedTasks
 
 
 class _GgaInfoReceivedRequiredTasks(GroundGridAnalysis):
     TasklistName = INFO_RECEIVED
     InQueue = _GgaInQueueTasks
-    Active = _GgaActiveTasks
+    Active = _GgaActive
     WaitingForClientReview = _GgaWaitingForClientReviewTasks
+    ActiveAgain = _GgaActiveAgain
     WaitingForCommissioning = _GgaWaitingForCommissioningTasks
     FinalDocumentation = _GgaFinalDocumentationTasks
     Complete = _GgaCompleteTasks

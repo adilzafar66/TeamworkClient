@@ -22,13 +22,13 @@ class ApiController:
         return res_obj.projects[0]
 
     def get_tasklists_from_project(self, project_id: str):
-        payload = {'projectIds': project_id}
+        payload = {'projectIds': project_id, 'showCompleted': True}
         res = requests.get(ApiEndpoints.TasklistsEndpoint, params=payload, headers=self._headers)
         res_obj = json.loads(res.content, object_hook=lambda d: SimpleNamespace(**d))
         return res_obj.tasklists
 
     def get_tasks_from_tasklist(self, tasklist_id: str):
-        payload = {'tasklistIds': tasklist_id, 'includeCompletedTasks': True}
+        payload = {'tasklistIds': tasklist_id, 'showCompletedLists': True, 'includeCompletedTasks': True}
         res = requests.get(ApiEndpoints.TasksEndpoint, params=payload, headers=self._headers)
         res_obj = json.loads(res.content, object_hook=lambda d: SimpleNamespace(**d))
         return res_obj.tasks

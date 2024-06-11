@@ -1,16 +1,16 @@
 from consts import SITE_WIDE_STUDY, INFO_REQUEST, INFO_RECEIVED
 from tasklists.tasklists import Tasklists
-from statuses.template import _InfoToBeRequestedTasks, _InfoToBeReviewed, _WaitingForInfoTasks, _ActiveTasks, _InQueue
+from statuses.template import _InfoToBeRequested, _InfoToBeReviewed, _WaitingForInfo, _Active, _InQueue, _ActiveAgain
 from statuses.template import _WaitingForClientReview, _WaitingForCommissioning, _FinalDocumentation, _Complete
 
 
-class _SiteWideInfoToBeRequestedTasks(_InfoToBeRequestedTasks):
+class _SiteWideInfoToBeRequested(_InfoToBeRequested):
     RequiredTasks = [
         Tasklists.SiteWideStudy.InfoRequest.Tasks['SubmitRfiToClient']
     ]
 
 
-class _SiteWideWaitingForInfoTasks(_WaitingForInfoTasks):
+class _SiteWideWaitingForInfo(_WaitingForInfo):
     RequiredTasks = [
         Tasklists.SiteWideStudy.InfoRequest.Tasks['FinalFollowupRfi']
     ]
@@ -24,11 +24,11 @@ class _SiteWideInfoToBeReviewedTasks(_InfoToBeReviewed):
 
 class _SiteWideInQueueTasks(_InQueue):
     RequiredTasks = [
-
+        Tasklists.SiteWideStudy.InfoReceived.Tasks['ProjectInQueue']
     ]
 
 
-class _SiteWideActiveTasks(_ActiveTasks):
+class _SiteWideActive(_Active):
     RequiredTasks = [
         Tasklists.SiteWideStudy.InfoReceived.Tasks['SubmitReportClient']
     ]
@@ -37,6 +37,12 @@ class _SiteWideActiveTasks(_ActiveTasks):
 class _SiteWideWaitingForClientReviewTasks(_WaitingForClientReview):
     RequiredTasks = [
         Tasklists.SiteWideStudy.InfoReceived.Tasks['FollowupIfr']
+    ]
+
+
+class _SiteWideActiveAgain(_ActiveAgain):
+    RequiredTasks = [
+        Tasklists.SiteWideStudy.InfoReceived.Tasks['SubmitReportFinalClient']
     ]
 
 
@@ -65,16 +71,17 @@ class SiteWideStudy:
 
 class _SiteWideInfoRequestRequiredTasks(SiteWideStudy):
     TasklistName = INFO_REQUEST
-    InfoToBeRequested = _SiteWideInfoToBeRequestedTasks
-    WaitingForInfo = _SiteWideWaitingForInfoTasks
+    InfoToBeRequested = _SiteWideInfoToBeRequested
+    WaitingForInfo = _SiteWideWaitingForInfo
     InfoToBeReviewed = _SiteWideInfoToBeReviewedTasks
 
 
 class _SiteWideInfoReceivedRequiredTasks(SiteWideStudy):
     TasklistName = INFO_RECEIVED
     InQueue = _SiteWideInQueueTasks
-    Active = _SiteWideActiveTasks
+    Active = _SiteWideActive
     WaitingForClientReview = _SiteWideWaitingForClientReviewTasks
+    ActiveAgain = _SiteWideActiveAgain
     WaitingForCommissioning = _SiteWideWaitingForCommissioningTasks
     FinalDocumentation = _SiteWideFinalDocumentationTasks
     Complete = _SiteWideCompleteTasks

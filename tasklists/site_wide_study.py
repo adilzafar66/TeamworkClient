@@ -1,5 +1,8 @@
+from consts import SITE_WIDE_INFO_REQUEST_NAME, SITE_WIDE_INFO_RECEIVED_NAME
+
+
 class _SiteWideInfoRequest:
-    Name = 'PSS - Site-wide Study - Info Request'
+    Name = SITE_WIDE_INFO_REQUEST_NAME
     Tasks = {
         'UsePtaMassAssignment': 'Use the PTA Mass assignment tool to assign the required assignees in the NetSuite',
         'StartPpmpDocumentation': 'Start PPMP Documentation',
@@ -15,9 +18,10 @@ class _SiteWideInfoRequest:
 
 
 class _SiteWideInfoReceive:
-    Name = 'PSS - Site-wide Study - Info Received'
+    Name = SITE_WIDE_INFO_RECEIVED_NAME
     Tasks = {
         'AddPpmpTasks': 'Add additional check-in tasks outlined by PR in PPMP checklist',
+        'ProjectInQueue': 'Project in Queue',
         'UpdateModelCompleteAnalysis': 'Update model & complete analysis',
         'SubmitReportInternal': 'Submit SC/COR/AF Report - 1 for internal review',
         'ReviewReport': 'Review SC/COR/AF Report - 1',
@@ -33,6 +37,7 @@ class _SiteWideInfoReceive:
         'SubmitReportFinalClient': 'Submit SC/COR/AF Report - 4 to client',
         'InformIfcSettingsApproval': 'Inform PIC that IFC settings are approved and ready for implementation',
         'FollowupIfc': 'Follow-up on latest submitted IFC revision if necessary',
+        'ReadyForCommissioning': 'Ready for Commissioning',
         'ConfirmSettings': 'Obtain confirmation that settings have been implemented by the latest study',
         'SubmitReportFinalInternal5': 'Submit SC/COR/AF Report - 5 for internal review',
         'ReviewReportFinal5': 'Review SC/COR/AF Report - 5',

@@ -17,7 +17,7 @@ class _AbstractStatus:
         return cls.Name
 
 
-class _InfoToBeRequestedTasks(_AbstractStatus):
+class _InfoToBeRequested(_AbstractStatus):
     Name = INFO_TO_BE_REQUESTED
 
 
@@ -29,16 +29,20 @@ class _InQueue(_AbstractStatus):
     Name = IN_QUEUE
 
 
-class _WaitingForInfoTasks(_AbstractStatus):
+class _WaitingForInfo(_AbstractStatus):
     Name = WAITING_FOR_INFO
 
 
-class _ActiveTasks(_AbstractStatus):
+class _Active(_AbstractStatus):
     Name = ACTIVE
 
 
 class _WaitingForClientReview(_AbstractStatus):
     Name = WAITING_FOR_CLIENT_REVIEW
+
+
+class _ActiveAgain(_AbstractStatus):
+    Name = ACTIVE
 
 
 class _WaitingForCommissioning(_AbstractStatus):

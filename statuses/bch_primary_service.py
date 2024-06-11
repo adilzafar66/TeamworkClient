@@ -1,16 +1,16 @@
 from consts import BCH_PRIMARY_SERVICE, INFO_REQUEST, INFO_RECEIVED
 from tasklists.tasklists import Tasklists
-from statuses.template import _InfoToBeRequestedTasks, _InfoToBeReviewed, _WaitingForInfoTasks, _ActiveTasks, _InQueue
+from statuses.template import _InfoToBeRequested, _InfoToBeReviewed, _WaitingForInfo, _Active, _InQueue, _ActiveAgain
 from statuses.template import _WaitingForClientReview, _WaitingForCommissioning, _FinalDocumentation, _Complete
 
 
-class _BchInfoToBeRequestedTasks(_InfoToBeRequestedTasks):
+class _BchInfoToBeRequested(_InfoToBeRequested):
     RequiredTasks = [
         Tasklists.BchPrimaryService.InfoRequest.Tasks['SubmitRfiToClient']
     ]
 
 
-class _BchWaitingForInfoTasks(_WaitingForInfoTasks):
+class _BchWaitingForInfo(_WaitingForInfo):
     RequiredTasks = [
         Tasklists.BchPrimaryService.InfoRequest.Tasks['FinalFollowupRfi']
     ]
@@ -24,11 +24,11 @@ class _BchInfoToBeReviewedTasks(_InfoToBeReviewed):
 
 class _BchInQueueTasks(_InQueue):
     RequiredTasks = [
-
+        Tasklists.BchPrimaryService.InfoReceived.Tasks['ProjectInQueue']
     ]
 
 
-class _BchActiveTasks(_ActiveTasks):
+class _BchActive(_Active):
     RequiredTasks = [
         Tasklists.BchPrimaryService.InfoReceived.Tasks['SubmitCsClient']
     ]
@@ -40,9 +40,15 @@ class _BchWaitingForClientReviewTasks(_WaitingForClientReview):
     ]
 
 
-class _BchWaitingForCommissioningTasks(_WaitingForCommissioning):
+class _BchActiveAgain(_ActiveAgain):
     RequiredTasks = [
 
+    ]
+
+
+class _BchWaitingForCommissioningTasks(_WaitingForCommissioning):
+    RequiredTasks = [
+        Tasklists.BchPrimaryService.InfoReceived['ReadyForCommissioning']
     ]
 
 
@@ -65,16 +71,17 @@ class BchPrimaryService:
 
 class _BchInfoRequestRequiredTasks(BchPrimaryService):
     TasklistName = INFO_REQUEST
-    InfoToBeRequested = _BchInfoToBeRequestedTasks
+    InfoToBeRequested = _BchInfoToBeRequested
     InfoToBeReviewed = _BchInfoToBeReviewedTasks
-    WaitingForInfo = _BchWaitingForInfoTasks
+    WaitingForInfo = _BchWaitingForInfo
 
 
 class _BchInfoReceivedRequiredTasks(BchPrimaryService):
     TasklistName = INFO_RECEIVED
     InQueue = _BchInQueueTasks
-    Active = _BchActiveTasks
+    Active = _BchActive
     WaitingForClientReview = _BchWaitingForClientReviewTasks
+    ActiveAgain = _BchActiveAgain
     WaitingForCommissioning = _BchWaitingForCommissioningTasks
     FinalDocumentation = _BchFinalDocumentationTasks
     Complete = _BchCompleteTasks

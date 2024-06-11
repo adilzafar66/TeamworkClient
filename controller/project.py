@@ -1,6 +1,6 @@
 from consts import POWER_SYSTEMS_STUDIES
 from controller.api_controller import ApiController
-from statuses.statuses import Statuses
+from controller.tasklist import Tasklist
 
 
 class Project:
@@ -12,6 +12,7 @@ class Project:
         self.prime_project_id = prime_project_id
         self.project_id = self._get_project_id()
         self.tasklists = self._get_relevant_tasklists()
+        self.completed_tasklists = [tasklist for tasklist in self.tasklists if tasklist.status == 'completed']
 
     def _get_project_id(self):
         project_details = self.api.get_project_details(self.prime_project_id)
@@ -21,17 +22,19 @@ class Project:
         return self.api.get_tasklists_from_project(self.project_id)
 
     @staticmethod
-    def _filter_relevant_tasklists(tasklist):
-        return ((Statuses.InfoReceived.Name in tasklist.name or Statuses.InfoReceived.Name in tasklist.name)
-                and tasklist.name.startswith(POWER_SYSTEMS_STUDIES))
+    def _is_relevant_tasklist(tasklist):
+        study_name = Tasklist.get_study_name(tasklist)
+        if not study_name:
+            return
+        tasklist_name = Tasklist.get_tasklist_name(tasklist)
+        if not tasklist_name:
+            return
+        is_pss_study = tasklist.name.lower().startswith(POWER_SYSTEMS_STUDIES.lower())
+        return is_pss_study
 
     def _get_relevant_tasklists(self):
         tasklists = self._get_project_tasklists()
-        return [tasklist for tasklist in tasklists if self._filter_relevant_tasklists(tasklist)]
-
-    @staticmethod
-    def get_tasklist_tags(tasklist):
-        return [tag.strip() for tag in tasklist.name.split(' - ')]
+        return [tasklist for tasklist in tasklists if self._is_relevant_tasklist(tasklist)]
 
     def get_tasks_from_tasklist(self, tasklist):
         return self.api.get_tasks_from_tasklist(tasklist.id)

@@ -1,5 +1,8 @@
+from consts import BCH_PRIMARY_INFO_REQUEST_NAME, BCH_PRIMARY_INFO_RECEIVED_NAME
+
+
 class _BchInfoRequest:
-    Name = 'PSS - BCH Primary Service - Info Request'
+    Name = BCH_PRIMARY_INFO_REQUEST_NAME
     Tasks = {
         'UsePtaMassAssignment': 'Use the PTA Mass assignment tool to assign the required assignees in the NetSuite',
         'StartPpmpDocumentation': 'Start PPMP Documentation',
@@ -14,9 +17,10 @@ class _BchInfoRequest:
 
 
 class _BchInfoReceive:
-    Name = 'PSS - BCH Primary Service - Info Received'
+    Name = BCH_PRIMARY_INFO_RECEIVED_NAME
     Tasks = {
         'AddPpmpTasks': 'Add additional check-in tasks outlined by PR in PPMP checklist',
+        'ProjectInQueue': 'Project in Queue',
         'CompleteAnalysis': 'Update model, complete analysis',
         'SubmitCsInternal': 'Submit BCH Primary Service Coordination Summary for Internal Review',
         'ReviewCs': 'Review BCH Primary Service Coordination Summary 1',
@@ -25,6 +29,7 @@ class _BchInfoReceive:
         'SubmitCsClient': 'Submit BCH Primary Service Coordination Summary - Rev 4 to client',
         'CompleteMilestone': 'Complete Invoicing Milestone - IFR in NetSuite and check "Ready to Invoice"',
         'FollowupIfr': 'Follow-up on latest submitted IFR revision if necessary',
+        'ReadyForCommissioning': 'Ready for Commissioning',
         'SubmitCsFinalInternal': 'Submit BCH Primary Service Coordination Summary - 5 for internal review',
         'ReviewCsFinal': 'Review BCH Primary Service Coordination Summary - 5',
         'SubmitCsFinalPic': 'Submit BCH Primary Service Coordination Summary - 5 to PIC',
