@@ -30,6 +30,7 @@ class _GroundGridInfoReceive:
         'AddFsTasklist': 'Add FS site work tasklist template for commissioning',
         'SubmitGgaToClient': 'Submit Ground Grid Analysis Report - 2 to client',
         'CompleteIfrMilestone': 'Complete Invoicing Milestone - IFR in NetSuite and check "Ready to Invoice"',
+        'WaitingForCommissioning': 'Waiting for Commissioning',
         'SubmitGgaFinalInternal': 'Submit Ground Grid Analysis Report - 5 for internal review',
         'ReviewGgaFinal': 'Review Ground Grid Analysis Report - 5',
         'UpdatePpmpFinal': 'Update PPMP checklist with final engineering decision, checks and project information',

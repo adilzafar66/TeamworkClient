@@ -1,4 +1,4 @@
-from consts import INFO_REQUEST, INFO_RECEIVED, UNIDENTIFIED
+from consts import INFO_REQUEST, INFO_RECEIVED, UNIDENTIFIED, WAITING_FOR_COMPLETION
 from statuses.bch_primary_service import _BchInfoRequestRequiredTasks, _BchInfoReceivedRequiredTasks
 from statuses.site_wide_study import _SiteWideInfoRequestRequiredTasks, _SiteWideInfoReceivedRequiredTasks
 from statuses.ground_grid_analysis import _GgaInfoRequestRequiredTasks, _GgaInfoReceivedRequiredTasks
@@ -22,7 +22,7 @@ class _AbstractTasklistStatuses:
         if cls.GroundGridAnalysis.Name in study_name:
             return cls.GroundGridAnalysis
         if cls.GroundGridDesign.Name in study_name:
-            return cls.GroundGridAnalysis
+            return cls.GroundGridDesign
         if cls.BreakerRetrofit.Name in study_name:
             return cls.BreakerRetrofit
 
@@ -73,6 +73,8 @@ class Statuses:
                 return status_study.FinalDocumentation.get_status_name()
             if not status_study.Complete.verify_status(tasks):
                 return status_study.Complete.get_status_name()
+            else:
+                return WAITING_FOR_COMPLETION
         return UNIDENTIFIED
 
     @classmethod

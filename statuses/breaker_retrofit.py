@@ -12,7 +12,7 @@ class _BrInfoToBeRequested(_InfoToBeRequested):
 
 class _BrWaitingForInfo(_WaitingForInfo):
     RequiredTasks = [
-        Tasklists.BreakerRetrofit.InfoRequest
+        Tasklists.BreakerRetrofit.InfoRequest.Tasks['FollowupRfi']
     ]
 
 
