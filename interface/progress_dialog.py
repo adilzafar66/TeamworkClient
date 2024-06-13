@@ -1,6 +1,6 @@
 from pathlib import Path
-from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QDialog
+from PyQt5.QtGui import QIcon, QColor
+from PyQt5.QtWidgets import QDialog, QListWidgetItem
 from interface.db_update_worker import DbUpdateWorker
 from interface.progress_dialog_ui import Ui_Dialog
 
@@ -25,13 +25,14 @@ class Dialog(QDialog, Ui_Dialog):
 
     def handle_update(self, data_dict, pb_value):
         self.progress_bar.setValue(pb_value)
-        project_log = data_dict['id'] + ' - ' + data_dict['name']
+        project_log = data_dict['id'] + ' - ' + data_dict['name'] + '  --->  ' + data_dict['progress']
         progress_log = data_dict['progress']
-        color = {'Failed': 'red', 'Done': 'green'}
-        html_text = (f'<span style="margin: 5px">{project_log}</span> - '
-                     f'<span style="color:{color[progress_log]}; margin: 5px">{progress_log}</span>')
-        self.log.insertHtml(html_text)
-        self.log.insertPlainText('\n')
+        color = {'Failed': (255, 0, 0), 'Done': (0, 0, 0)}
+        item = QListWidgetItem()
+        item.setForeground(QColor(*color[progress_log]))
+        item.setText(project_log)
+        self.log.addItem(item)
+        self.log.scrollToBottom()
 
     def handle_finished(self):
         self.progress_bar.setValue(100)

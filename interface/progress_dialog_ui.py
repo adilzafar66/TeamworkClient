@@ -7,13 +7,15 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtGui import QWindow
+from PyQt5.QtCore import Qt
 
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(425, 305)
+        Dialog.resize(435, 305)
+        Dialog.setWindowFlag(Qt.WindowMinimizeButtonHint, True)
+        Dialog.setWindowFlag(Qt.WindowMaximizeButtonHint, True)
         self.verticalLayout = QtWidgets.QVBoxLayout(Dialog)
         self.verticalLayout.setContentsMargins(15, 15, 15, 15)
         self.verticalLayout.setSpacing(8)
@@ -29,10 +31,11 @@ class Ui_Dialog(object):
         self.progress_bar.setTextDirection(QtWidgets.QProgressBar.Direction.TopToBottom)
         self.progress_bar.setObjectName("progress_bar")
         self.verticalLayout.addWidget(self.progress_bar)
-        self.log = QtWidgets.QTextBrowser(parent=Dialog)
+        self.log = QtWidgets.QListWidget(parent=Dialog)
         self.log.setFrameShape(QtWidgets.QFrame.Shape.Box)
-        self.log.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
-        self.log.setTextInteractionFlags(QtCore.Qt.TextInteractionFlag.NoTextInteraction)
+        self.log.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.DoubleClicked|QtWidgets.QAbstractItemView.EditTrigger.SelectedClicked)
+        self.log.setProperty("showDropIndicator", True)
+        self.log.setWordWrap(True)
         self.log.setObjectName("log")
         self.verticalLayout.addWidget(self.log)
         self.btn_box = QtWidgets.QDialogButtonBox(parent=Dialog)

@@ -26,9 +26,9 @@ class ExcelClient:
             sca_status_cell = row[self.sca_status_col]
             ground_status_cell = row[self.ground_status_col]
             project_status_cell = row[self.project_status_col]
-            if id_cell.value and (project_status_cell.value.strip() in IN_PROGRESS
-                                  and (sca_status_cell.value.strip() not in [COMPLETE, NA]
-                                       or ground_status_cell.value.strip() not in [COMPLETE, NA])):
+            if id_cell.value and (project_status_cell.value == IN_PROGRESS
+                                  and (sca_status_cell.value not in [COMPLETE, NA]
+                                       or ground_status_cell.value not in [COMPLETE, NA])):
                 search = re.search(r'^\d+', str(id_cell.value))
                 projects_data.append({'row': id_cell.row,
                                       'id': search.group(),

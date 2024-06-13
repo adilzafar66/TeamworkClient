@@ -20,7 +20,7 @@ class DbUpdateWorker(QThread):
     def run(self):
         try:
             pb_value = 0
-            data = self.excel_client.get_projects_data(start_row=1369, end_row=1369)
+            data = self.excel_client.get_projects_data()
             for entry in data:
                 prime_project_id = entry['id']
                 try:
@@ -30,7 +30,6 @@ class DbUpdateWorker(QThread):
                     entry.update({'progress': 'Failed'})
                     self.progress_update.emit(entry, int(pb_value))
                     continue
-                print(entry)
                 project_studies = defaultdict(list)
                 bch_set = False
                 for tasklist in project.tasklists:
@@ -76,7 +75,6 @@ class DbUpdateWorker(QThread):
 
                 pb_value += float(100) / len(data)
                 entry.update({'progress': 'Done'})
-                print(entry)
                 self.progress_update.emit(entry, int(pb_value))
             self.excel_client.set_project_statuses(data)
             self.progress_finished.emit()

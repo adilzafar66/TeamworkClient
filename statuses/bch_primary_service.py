@@ -1,7 +1,7 @@
 from consts import BCH_PRIMARY_SERVICE, INFO_REQUEST, INFO_RECEIVED
 from tasklists.tasklists import Tasklists
-from statuses.template import _InfoToBeRequested, _InfoToBeReviewed, _WaitingForInfo, _Active, _InQueue, _ActiveAgain
-from statuses.template import _WaitingForClientReview, _WaitingForCommissioning, _FinalDocumentation, _Complete, _ActiveFinal
+from statuses.template import _InfoToBeRequested, _InfoToBeReviewed, _WaitingForInfo, _Active, _InQueue, _ActiveAgain, _ActiveFinal
+from statuses.template import _WaitingForClientReview, _WaitingForCommissioning, _FinalDocumentation, _Complete
 
 
 class _BchInfoToBeRequested(_InfoToBeRequested):
