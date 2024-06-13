@@ -20,7 +20,7 @@ class DbUpdateWorker(QThread):
     def run(self):
         try:
             pb_value = 0
-            data = self.excel_client.get_projects_data(start_row=1310, end_row=1345)
+            data = self.excel_client.get_projects_data(start_row=1369, end_row=1369)
             for entry in data:
                 prime_project_id = entry['id']
                 try:
@@ -64,9 +64,14 @@ class DbUpdateWorker(QThread):
                         if bch_set:
                             continue
                         entry['sca_status'] = study.get_study_status()
-                    elif study.name == GROUND_GRID_ANALYSIS or study.name == GROUND_GRID_DESIGN:
+                    elif (study.name == GROUND_GRID_ANALYSIS and GROUND_GRID_ANALYSIS_CX not in project_studies and
+                          GROUND_GRID_DESIGN not in project_studies):
                         entry['ground_status'] = study.get_study_status()
-                    elif study.name == BREAKER_RETROFIT:
+                    elif study.name == GROUND_GRID_ANALYSIS_CX and GROUND_GRID_DESIGN not in project_studies:
+                        entry['ground_status'] = study.get_study_status()
+                    elif study.name == GROUND_GRID_DESIGN:
+                        entry['ground_status'] = study.get_study_status()
+                    elif study.name == BREAKER_RETROFIT and SITE_WIDE_STUDY not in project_studies:
                         entry['sca_status'] = study.get_study_status()
 
                 pb_value += float(100) / len(data)
