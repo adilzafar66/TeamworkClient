@@ -60,8 +60,7 @@ class _GgdFinalDocumentationTasks(_FinalDocumentation):
 
 class _GgdCompleteTasks(_Complete):
     RequiredTasks = [
-        Tasklists.GroundGridDesign.InfoReceived.Tasks['NotifyPic'],
-        Tasklists.GroundGridDesign.InfoReceived.Tasks['UncheckTimeEntry']
+        Tasklists.GroundGridDesign.InfoReceived.Tasks['NotifyPic']
     ]
 
 

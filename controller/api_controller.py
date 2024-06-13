@@ -16,7 +16,7 @@ class ApiController:
         }
 
     def get_project_details(self, prime_project_id: str):
-        payload = {'searchTerm': prime_project_id}
+        payload = {'searchTerm': prime_project_id, 'includeArchivedProjects': True}
         res = requests.get(ApiEndpoints.ProjectEndpoint, params=payload, headers=self._headers)
         res_obj = json.loads(res.content, object_hook=lambda d: SimpleNamespace(**d))
         if res_obj.projects:

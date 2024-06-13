@@ -54,14 +54,13 @@ class _SiteWideWaitingForCommissioningTasks(_WaitingForCommissioning):
 
 class _SiteWideFinalDocumentationTasks(_FinalDocumentation):
     RequiredTasks = [
-        Tasklists.SiteWideStudy.InfoReceived.Tasks['MailArcFlashLabels']
+        Tasklists.SiteWideStudy.InfoReceived.Tasks['SavePpmpDocs']
     ]
 
 
 class _SiteWideCompleteTasks(_Complete):
     RequiredTasks = [
-        Tasklists.SiteWideStudy.InfoReceived.Tasks['NotifyPic'],
-        Tasklists.SiteWideStudy.InfoReceived.Tasks['UncheckTimeEntry']
+        Tasklists.SiteWideStudy.InfoReceived.Tasks['NotifyPic']
     ]
 
 

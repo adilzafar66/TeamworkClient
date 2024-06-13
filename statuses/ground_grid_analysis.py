@@ -54,14 +54,13 @@ class _GgaWaitingForCommissioningTasks(_WaitingForCommissioning):
 
 class _GgaFinalDocumentationTasks(_FinalDocumentation):
     RequiredTasks = [
-        Tasklists.GroundGridAnalysis.InfoReceived.Tasks['MoveToRefFolder']
+        Tasklists.GroundGridAnalysis.InfoReceived.Tasks['SavePpmpDocs']
     ]
 
 
 class _GgaCompleteTasks(_Complete):
     RequiredTasks = [
-        Tasklists.GroundGridAnalysis.InfoReceived.Tasks['NotifyPic'],
-        Tasklists.GroundGridAnalysis.InfoReceived.Tasks['UncheckTimeEntry']
+        Tasklists.GroundGridAnalysis.InfoReceived.Tasks['NotifyPic']
     ]
 
 

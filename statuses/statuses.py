@@ -73,8 +73,6 @@ class Statuses:
                 return status_study.FinalDocumentation.get_status_name()
             if not status_study.Complete.verify_status(tasks):
                 return status_study.Complete.get_status_name()
-            else:
-                return WAITING_FOR_COMPLETION
         return UNIDENTIFIED
 
     @classmethod
