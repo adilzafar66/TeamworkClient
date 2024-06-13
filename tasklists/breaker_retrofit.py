@@ -11,6 +11,7 @@ class _BreakerRetrofitInfoRequest:
         'RequestLatestSld': 'Request latest single line from PIC or Client',
         'SubmitRfiToPic': 'Submit RFI to PIC, this may include internal info request',
         'SubmitRfiToClient': 'Submit RFI to client',
+        'FollowupRfi': 'Send PIC or client follow-up for missing RFI info (add comment to task when each follow-up',
         'InfoReceived': 'Received all info needed to complete analysis / Added Info Received task list'
     }
 

@@ -48,20 +48,19 @@ class _BchActiveAgain(_ActiveAgain):
 
 class _BchWaitingForCommissioningTasks(_WaitingForCommissioning):
     RequiredTasks = [
-        Tasklists.BchPrimaryService.InfoReceived['ReadyForCommissioning']
+        Tasklists.BchPrimaryService.InfoReceived.Tasks['ReadyForCommissioning']
     ]
 
 
 class _BchFinalDocumentationTasks(_FinalDocumentation):
     RequiredTasks = [
-        Tasklists.BchPrimaryService.InfoReceived.Tasks['SubmitCsFinalClient']
+        Tasklists.BchPrimaryService.InfoReceived.Tasks['MoveToRefFolder']
     ]
 
 
 class _BchCompleteTasks(_Complete):
     RequiredTasks = [
-        Tasklists.BchPrimaryService.InfoReceived.Tasks['NotifyPic'],
-        Tasklists.BchPrimaryService.InfoReceived.Tasks['UncheckTimeEntry']
+        Tasklists.BchPrimaryService.InfoReceived.Tasks['NotifyPic']
     ]
 
 

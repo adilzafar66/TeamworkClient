@@ -35,7 +35,7 @@ class Tasklist:
         if self.status != 'completed':
             tasklist_statuses = Statuses.get_tasklist_statuses(self.name)
             study_statuses = tasklist_statuses.get_study_statuses(study_name)
-            return Statuses.get_status(self.get_active_tasks(), study_statuses)
+            return Statuses.get_status(self.tasks, study_statuses)
         return COMPLETE
 
     @staticmethod

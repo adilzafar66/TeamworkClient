@@ -12,7 +12,7 @@ class _BrInfoToBeRequested(_InfoToBeRequested):
 
 class _BrWaitingForInfo(_WaitingForInfo):
     RequiredTasks = [
-        Tasklists.BreakerRetrofit.InfoRequest
+        Tasklists.BreakerRetrofit.InfoRequest.Tasks['FollowupRfi']
     ]
 
 
@@ -54,14 +54,13 @@ class _BrWaitingForCommissioningTasks(_WaitingForCommissioning):
 
 class _BrFinalDocumentationTasks(_FinalDocumentation):
     RequiredTasks = [
-        Tasklists.BreakerRetrofit.InfoReceived.Tasks['RecordAsLeftSettings']
+        Tasklists.BreakerRetrofit.InfoReceived.Tasks['UpdatePpmpFinalChecklist']
     ]
 
 
 class _BrCompleteTasks(_Complete):
     RequiredTasks = [
-        Tasklists.BreakerRetrofit.InfoReceived.Tasks['NotifyPic'],
-        Tasklists.BreakerRetrofit.InfoReceived.Tasks['UncheckTimeEntry']
+        Tasklists.BreakerRetrofit.InfoReceived.Tasks['NotifyPic']
     ]
 
 

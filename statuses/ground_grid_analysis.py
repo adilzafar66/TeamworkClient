@@ -36,7 +36,7 @@ class _GgaActive(_Active):
 
 class _GgaActiveAgain(_ActiveAgain):
     RequiredTasks = [
-
+        Tasklists.GroundGridAnalysis.InfoReceived.Tasks['SubmitGgaFinalToClient']
     ]
 
 
@@ -48,20 +48,19 @@ class _GgaWaitingForClientReviewTasks(_WaitingForClientReview):
 
 class _GgaWaitingForCommissioningTasks(_WaitingForCommissioning):
     RequiredTasks = [
-
+        Tasklists.GroundGridAnalysis.InfoReceived.Tasks['WaitingForCommissioning']
     ]
 
 
 class _GgaFinalDocumentationTasks(_FinalDocumentation):
     RequiredTasks = [
-        Tasklists.GroundGridAnalysis.InfoReceived.Tasks['AddProjectCloseout']
+        Tasklists.GroundGridAnalysis.InfoReceived.Tasks['SavePpmpDocs']
     ]
 
 
 class _GgaCompleteTasks(_Complete):
     RequiredTasks = [
-        Tasklists.GroundGridAnalysis.InfoReceived.Tasks['NotifyPic'],
-        Tasklists.GroundGridAnalysis.InfoReceived.Tasks['UncheckTimeEntry']
+        Tasklists.GroundGridAnalysis.InfoReceived.Tasks['NotifyPic']
     ]
 
 

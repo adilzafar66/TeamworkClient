@@ -16,10 +16,11 @@ class ApiController:
         }
 
     def get_project_details(self, prime_project_id: str):
-        payload = {'searchTerm': prime_project_id}
+        payload = {'searchTerm': prime_project_id, 'includeArchivedProjects': True}
         res = requests.get(ApiEndpoints.ProjectEndpoint, params=payload, headers=self._headers)
         res_obj = json.loads(res.content, object_hook=lambda d: SimpleNamespace(**d))
-        return res_obj.projects[0]
+        if res_obj.projects:
+            return res_obj.projects[0]
 
     def get_tasklists_from_project(self, project_id: str):
         payload = {'projectIds': project_id, 'showCompleted': True}

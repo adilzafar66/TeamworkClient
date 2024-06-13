@@ -16,7 +16,10 @@ class Project:
 
     def _get_project_id(self):
         project_details = self.api.get_project_details(self.prime_project_id)
-        return project_details.id
+        if project_details:
+            return project_details.id
+        else:
+            raise ValueError('Project not found')
 
     def _get_project_tasklists(self):
         return self.api.get_tasklists_from_project(self.project_id)
