@@ -1,6 +1,6 @@
 from consts import INFO_REQUEST, INFO_RECEIVED, BREAKER_RETROFIT
 from tasklists.tasklists import Tasklists
-from statuses.template import _InfoToBeRequested, _InfoToBeReviewed, _WaitingForInfo, _Active, _InQueue, _ActiveAgain
+from statuses.template import _InfoToBeRequested, _InfoToBeReviewed, _WaitingForInfo, _Active, _InQueue, _ActiveAgain, _ActiveFinal
 from statuses.template import _WaitingForClientReview, _WaitingForCommissioning, _FinalDocumentation, _Complete
 
 
@@ -52,6 +52,12 @@ class _BrWaitingForCommissioningTasks(_WaitingForCommissioning):
     ]
 
 
+class _BrActiveFinal(_ActiveFinal):
+    RequiredTasks = [
+
+    ]
+
+
 class _BrFinalDocumentationTasks(_FinalDocumentation):
     RequiredTasks = [
         Tasklists.BreakerRetrofit.InfoReceived.Tasks['UpdatePpmpFinalChecklist']
@@ -82,5 +88,6 @@ class _BrInfoReceivedRequiredTasks(BreakerRetrofit):
     WaitingForClientReview = _BrWaitingForClientReviewTasks
     ActiveAgain = _BrActiveAgain
     WaitingForCommissioning = _BrWaitingForCommissioningTasks
+    ActiveFinal = _BrActiveFinal
     FinalDocumentation = _BrFinalDocumentationTasks
     Complete = _BrCompleteTasks

@@ -49,6 +49,10 @@ class _WaitingForCommissioning(_AbstractStatus):
     Name = WAITING_FOR_COMMISSIONING
 
 
+class _ActiveFinal(_AbstractStatus):
+    Name = ACTIVE
+
+
 class _FinalDocumentation(_AbstractStatus):
     Name = FINAL_DOCUMENTATION
 

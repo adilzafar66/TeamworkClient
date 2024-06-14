@@ -1,6 +1,6 @@
 from consts import GROUND_GRID_ANALYSIS, INFO_REQUEST, INFO_RECEIVED
 from tasklists.tasklists import Tasklists
-from statuses.template import _InfoToBeRequested, _InfoToBeReviewed, _WaitingForInfo, _Active, _InQueue, _ActiveAgain
+from statuses.template import _InfoToBeRequested, _InfoToBeReviewed, _WaitingForInfo, _Active, _InQueue, _ActiveAgain, _ActiveFinal
 from statuses.template import _WaitingForClientReview, _WaitingForCommissioning, _FinalDocumentation, _Complete
 
 
@@ -24,7 +24,7 @@ class _GgaInfoToBeReviewedTasks(_InfoToBeReviewed):
 
 class _GgaInQueueTasks(_InQueue):
     RequiredTasks = [
-        Tasklists.GroundGridAnalysis.InfoReceived.Tasks['ProjectInQueue']
+
     ]
 
 
@@ -34,13 +34,13 @@ class _GgaActive(_Active):
     ]
 
 
-class _GgaActiveAgain(_ActiveAgain):
+class _GgaWaitingForClientReviewTasks(_WaitingForClientReview):
     RequiredTasks = [
-        Tasklists.GroundGridAnalysis.InfoReceived.Tasks['SubmitGgaFinalToClient']
+
     ]
 
 
-class _GgaWaitingForClientReviewTasks(_WaitingForClientReview):
+class _GgaActiveAgain(_ActiveAgain):
     RequiredTasks = [
 
     ]
@@ -52,9 +52,15 @@ class _GgaWaitingForCommissioningTasks(_WaitingForCommissioning):
     ]
 
 
+class _GgaActiveFinal(_ActiveFinal):
+    RequiredTasks = [
+        Tasklists.GroundGridAnalysis.InfoReceived.Tasks['SubmitGgaFinalToClient']
+    ]
+
+
 class _GgaFinalDocumentationTasks(_FinalDocumentation):
     RequiredTasks = [
-        Tasklists.GroundGridAnalysis.InfoReceived.Tasks['SavePpmpDocs']
+
     ]
 
 
@@ -82,5 +88,6 @@ class _GgaInfoReceivedRequiredTasks(GroundGridAnalysis):
     WaitingForClientReview = _GgaWaitingForClientReviewTasks
     ActiveAgain = _GgaActiveAgain
     WaitingForCommissioning = _GgaWaitingForCommissioningTasks
+    ActiveFinal = _GgaActiveFinal
     FinalDocumentation = _GgaFinalDocumentationTasks
     Complete = _GgaCompleteTasks

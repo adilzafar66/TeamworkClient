@@ -12,6 +12,7 @@ class DbUpdateWorker(QThread):
     error_occurred = pyqtSignal(str)
     progress_update = pyqtSignal(dict, int)
     progress_finished = pyqtSignal()
+    label_update = pyqtSignal(str)
 
     def __init__(self, wb_path, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -20,9 +21,10 @@ class DbUpdateWorker(QThread):
     def run(self):
         try:
             pb_value = 0
-            data = self.excel_client.get_projects_data(start_row=1310, end_row=1345)
+            data = self.excel_client.get_projects_data()
             for entry in data:
                 prime_project_id = entry['id']
+                self.label_update.emit(prime_project_id)
                 try:
                     project = Project(prime_project_id)
                 except ValueError:
@@ -30,7 +32,6 @@ class DbUpdateWorker(QThread):
                     entry.update({'progress': 'Failed'})
                     self.progress_update.emit(entry, int(pb_value))
                     continue
-                print(entry)
                 project_studies = defaultdict(list)
                 bch_set = False
                 for tasklist in project.tasklists:
@@ -64,14 +65,18 @@ class DbUpdateWorker(QThread):
                         if bch_set:
                             continue
                         entry['sca_status'] = study.get_study_status()
-                    elif study.name == GROUND_GRID_ANALYSIS or study.name == GROUND_GRID_DESIGN:
+                    elif (study.name == GROUND_GRID_ANALYSIS and GROUND_GRID_ANALYSIS_CX not in project_studies and
+                          GROUND_GRID_DESIGN not in project_studies):
                         entry['ground_status'] = study.get_study_status()
-                    elif study.name == BREAKER_RETROFIT:
+                    elif study.name == GROUND_GRID_ANALYSIS_CX and GROUND_GRID_DESIGN not in project_studies:
+                        entry['ground_status'] = study.get_study_status()
+                    elif study.name == GROUND_GRID_DESIGN:
+                        entry['ground_status'] = study.get_study_status()
+                    elif study.name == BREAKER_RETROFIT and SITE_WIDE_STUDY not in project_studies:
                         entry['sca_status'] = study.get_study_status()
 
                 pb_value += float(100) / len(data)
                 entry.update({'progress': 'Done'})
-                print(entry)
                 self.progress_update.emit(entry, int(pb_value))
             self.excel_client.set_project_statuses(data)
             self.progress_finished.emit()

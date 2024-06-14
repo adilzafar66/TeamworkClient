@@ -1,6 +1,6 @@
 from consts import SITE_WIDE_STUDY, INFO_REQUEST, INFO_RECEIVED
 from tasklists.tasklists import Tasklists
-from statuses.template import _InfoToBeRequested, _InfoToBeReviewed, _WaitingForInfo, _Active, _InQueue, _ActiveAgain
+from statuses.template import _InfoToBeRequested, _InfoToBeReviewed, _WaitingForInfo, _Active, _InQueue, _ActiveAgain, _ActiveFinal
 from statuses.template import _WaitingForClientReview, _WaitingForCommissioning, _FinalDocumentation, _Complete
 
 
@@ -52,6 +52,12 @@ class _SiteWideWaitingForCommissioningTasks(_WaitingForCommissioning):
     ]
 
 
+class _SiteWideActiveFinal(_ActiveFinal):
+    RequiredTasks = [
+
+    ]
+
+
 class _SiteWideFinalDocumentationTasks(_FinalDocumentation):
     RequiredTasks = [
         Tasklists.SiteWideStudy.InfoReceived.Tasks['SavePpmpDocs']
@@ -82,5 +88,6 @@ class _SiteWideInfoReceivedRequiredTasks(SiteWideStudy):
     WaitingForClientReview = _SiteWideWaitingForClientReviewTasks
     ActiveAgain = _SiteWideActiveAgain
     WaitingForCommissioning = _SiteWideWaitingForCommissioningTasks
+    ActiveFinal = _SiteWideActiveFinal
     FinalDocumentation = _SiteWideFinalDocumentationTasks
     Complete = _SiteWideCompleteTasks

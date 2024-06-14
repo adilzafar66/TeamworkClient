@@ -1,6 +1,6 @@
 from consts import INFO_REQUEST, INFO_RECEIVED, GROUND_GRID_DESIGN
 from tasklists.tasklists import Tasklists
-from statuses.template import _InfoToBeRequested, _InfoToBeReviewed, _WaitingForInfo, _Active, _InQueue, _ActiveAgain
+from statuses.template import _InfoToBeRequested, _InfoToBeReviewed, _WaitingForInfo, _Active, _InQueue, _ActiveAgain, _ActiveFinal
 from statuses.template import _WaitingForClientReview, _WaitingForCommissioning, _FinalDocumentation, _Complete
 
 
@@ -52,6 +52,12 @@ class _GgdWaitingForCommissioningTasks(_WaitingForCommissioning):
     ]
 
 
+class _GgdActiveFinal(_ActiveFinal):
+    RequiredTasks = [
+
+    ]
+
+
 class _GgdFinalDocumentationTasks(_FinalDocumentation):
     RequiredTasks = [
         Tasklists.GroundGridDesign.InfoReceived.Tasks['MoveToRefFolder']
@@ -82,5 +88,6 @@ class _GgdInfoReceivedRequiredTasks(GroundGridDesign):
     WaitingForClientReview = _GgdWaitingForClientReviewTasks
     ActiveAgain = _GgdActiveAgain
     WaitingForCommissioning = _GgdWaitingForCommissioningTasks
+    ActiveFinal = _GgdActiveFinal
     FinalDocumentation = _GgdFinalDocumentationTasks
     Complete = _GgdCompleteTasks

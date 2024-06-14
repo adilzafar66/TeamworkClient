@@ -1,5 +1,5 @@
 from consts import UNIDENTIFIED, COMPLETE, BCH_PRIMARY_SERVICE, SITE_WIDE_STUDY, GROUND_GRID_ANALYSIS, \
-    GROUND_GRID_DESIGN, BREAKER_RETROFIT, INFO_REQUEST, INFO_RECEIVED
+    GROUND_GRID_DESIGN, BREAKER_RETROFIT, INFO_REQUEST, INFO_RECEIVED, GROUND_GRID_ANALYSIS_CX, WITH_PRE_CX
 from statuses.statuses import Statuses
 
 
@@ -51,6 +51,10 @@ class Tasklist:
             return BCH_PRIMARY_SERVICE
         if SITE_WIDE_STUDY.lower() in tasklist.name.lower():
             return SITE_WIDE_STUDY
+        if (GROUND_GRID_ANALYSIS.lower() in tasklist.name.lower() and
+            Tasklist.get_tasklist_name(tasklist) == INFO_RECEIVED and
+                WITH_PRE_CX.lower() in tasklist.name.lower()):
+            return GROUND_GRID_ANALYSIS_CX
         if GROUND_GRID_ANALYSIS.lower() in tasklist.name.lower():
             return GROUND_GRID_ANALYSIS
         if GROUND_GRID_DESIGN.lower() in tasklist.name.lower():
