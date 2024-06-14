@@ -53,4 +53,4 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "PSS Database Update"))
-        self.progress_label.setText(_translate("Dialog", "Updating statuses:"))
+        self.progress_label.setText(_translate("Dialog", "Initializing..."))

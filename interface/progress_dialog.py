@@ -14,16 +14,19 @@ class Dialog(QDialog, Ui_Dialog):
         self.setupUi(self)
         self.setWindowIcon(QIcon(icon_path))
         self.show()
-        self.run_progress()
 
     def run_progress(self):
         self.worker = DbUpdateWorker(self.wb_path)
         self.worker.error_occurred.connect(self.handle_error)
-        self.worker.progress_update.connect(self.handle_update)
+        self.worker.progress_update.connect(self.handle_update_pb)
+        self.worker.label_update.connect(self.handle_update_label)
         self.worker.progress_finished.connect(self.handle_finished)
         self.worker.start()
 
-    def handle_update(self, data_dict, pb_value):
+    def handle_update_label(self, project_id):
+        self.progress_label.setText(f'Updating statuses for job {project_id}:')
+
+    def handle_update_pb(self, data_dict, pb_value):
         self.progress_bar.setValue(pb_value)
         project_log = data_dict['id'] + ' - ' + data_dict['name'] + '  --->  ' + data_dict['progress']
         progress_log = data_dict['progress']

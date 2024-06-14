@@ -1,6 +1,5 @@
 import re
 from openpyxl import load_workbook
-
 from consts import COMPLETE, NA, IN_PROGRESS
 
 

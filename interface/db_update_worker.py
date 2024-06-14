@@ -12,6 +12,7 @@ class DbUpdateWorker(QThread):
     error_occurred = pyqtSignal(str)
     progress_update = pyqtSignal(dict, int)
     progress_finished = pyqtSignal()
+    label_update = pyqtSignal(str)
 
     def __init__(self, wb_path, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -23,6 +24,7 @@ class DbUpdateWorker(QThread):
             data = self.excel_client.get_projects_data()
             for entry in data:
                 prime_project_id = entry['id']
+                self.label_update.emit(prime_project_id)
                 try:
                     project = Project(prime_project_id)
                 except ValueError:
