@@ -10,7 +10,9 @@ class ExcelClient:
         self.id_col = self.get_col_num_from_heading('JOB #')
         self.name_col = self.get_col_num_from_heading('PROJECT')
         self.sca_status_col = self.get_col_num_from_heading('STATUS SC/COR/AF')
+        self.sca_status_date_col = self.get_col_num_from_heading('STATUS CHANGED')
         self.ground_status_col = self.get_col_num_from_heading('STATUS GND')
+        self.ground_status_date_col = self.get_col_num_from_heading('STATUS CHANGED2')
         self.project_status_col = self.get_col_num_from_heading('PROJECT STATUS')
         self.project_data = []
         self.wb_path = wb_path
@@ -33,7 +35,9 @@ class ExcelClient:
                                       'id': search.group(),
                                       'name': name_cell.value,
                                       'sca_status': sca_status_cell.value,
-                                      'ground_status': ground_status_cell.value})
+                                      'sca_status_date': None,
+                                      'ground_status': ground_status_cell.value,
+                                      'ground_status_date': None})
         return projects_data
 
     def set_project_statuses(self, projects_data):
@@ -41,6 +45,8 @@ class ExcelClient:
             row = self.ws[project_data['row']]
             row[self.sca_status_col].value = project_data['sca_status']
             row[self.ground_status_col].value = project_data['ground_status']
+            row[self.sca_status_date_col].value = project_data['sca_status_date']
+            row[self.ground_status_date_col].value = project_data['ground_status_date']
         self.wb.save(self.wb_path)
         self.wb.close()
 

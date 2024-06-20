@@ -29,7 +29,7 @@ class Project:
         study_name = Tasklist.get_study_name(tasklist)
         if not study_name:
             return
-        tasklist_name = Tasklist.get_tasklist_name(tasklist)
+        tasklist_name = Tasklist.get_name(tasklist)
         if not tasklist_name:
             return
         is_pss_study = tasklist.name.lower().startswith(POWER_SYSTEMS_STUDIES.lower())
