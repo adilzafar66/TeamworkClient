@@ -38,18 +38,12 @@ class DbUpdateWorker(QThread):
                     continue
 
                 bch_set = False
-                project_studies = self.sort_project_tasklists(project.tasklists)
+                project_studies = self.group_tasklists_by_study(project.tasklists)
                 for study_name, tasklists in project_studies.items():
                     study = Study(study_name)
-                    for tasklist in tasklists:
-                        tasklist_name = Tasklist.get_name(tasklist)
-                        tasklist_tasks = project.get_tasks_from_tasklist(tasklist)
-                        study.set_tasklist_by_name(tasklist_name, tasklist, tasklist_tasks)
-
-                    shift_statuses = [WAITING_FOR_CLIENT_REVIEW,
-                                      WAITING_FOR_COMMISSIONING,
-                                      FINAL_DOCUMENTATION,
-                                      COMPLETE]
+                    study.set_tasklists(tasklists, project.get_tasks_from_tasklist)
+                    shift_statuses = [WAITING_FOR_CLIENT_REVIEW, WAITING_FOR_COMMISSIONING,
+                                      FINAL_DOCUMENTATION, COMPLETE]
 
                     if study.name == BCH_PRIMARY_SERVICE:
                         status = study.get_study_status()
@@ -89,7 +83,7 @@ class DbUpdateWorker(QThread):
         shutil.copy2(self.wb_path, self.copy_path)
 
     @staticmethod
-    def sort_project_tasklists(tasklists):
+    def group_tasklists_by_study(tasklists):
         project_studies = defaultdict(list)
         for tasklist in tasklists:
             study_name = Tasklist.get_study_name(tasklist)
