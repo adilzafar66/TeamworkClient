@@ -37,3 +37,9 @@ class Study:
             self.set_info_request(tasklist, tasklist_tasks)
         if self.info_received.name.lower() in tasklist_name.lower():
             self.set_info_received(tasklist, tasklist_tasks)
+
+    def set_tasklists(self, tasklists, get_tasks_from_tasklist):
+        for tasklist in tasklists:
+            tasklist_name = Tasklist.get_name(tasklist)
+            tasklist_tasks = get_tasks_from_tasklist(tasklist)
+            self.set_tasklist_by_name(tasklist_name, tasklist, tasklist_tasks)
